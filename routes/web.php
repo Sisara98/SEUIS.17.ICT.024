@@ -12,11 +12,19 @@ use App\Http\Controllers\adminController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::view('admin', 'admins');
-Route::post('adduser',[adminController::class,'addadmin']);
-Route::view('fetch', 'fetchdata');
-Route::get('fetch',[adminController::class,'getdata']);
+
+Route::post('adduser', [AdminController::class, 'addadmin']);
+
+
+Route::get('fetch', [adminController::class, 'getdata']);
+
+Route::get('delete/{id}',[adminController::class,'delete']);
+
+Route::get('edit/{id}', [adminController::class, 'edit']);
+
+Route::post('/update', [adminController::class, 'update']);
